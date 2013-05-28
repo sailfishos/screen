@@ -1,0 +1,176 @@
+* Sat Aug 25 2012 Marko Saukko <marko.saukko@jollamobile.com> - 4.0.3
+- Added /etc/tmpfiles.d/screen.conf to fix /var/run/screen directory 
+  creation with systemd.
+
+* Mon Mar 05 2012 Marko Saukko <marko.saukko@gmail.com> - 4.0.3
+- Added .yaml for spectacle
+- Added -docs subpackage to fix part of MER#197.
+
+* Fri Apr 24 2009 Passion Zhao <passion.zhao@intel.com> - 4.0.3
+- Add screen-CVE-2009-1214,1215.patch
+
+* Fri May 16 2008 Miroslav Lichvar <mlichvar@redhat.com> - 4.0.3-12
+- fix multiuser support (#446049)
+
+* Mon Apr 07 2008 Miroslav Lichvar <mlichvar@redhat.com> - 4.0.3-11
+- don't include stropts.h (#440803)
+- fix compiler warnings in ipv6 patch
+
+* Tue Feb 26 2008 Miroslav Lichvar <mlichvar@redhat.com> - 4.0.3-10
+- don't set xterm function keys in default config (#151556)
+- always return 0 in scriptlet (#433882)
+- fix pty permissions
+- enable utempter support
+- link with libtinfo, don't link with libutil
+- spec cleanup
+
+* Tue Feb 19 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 4.0.3-9
+- Autorebuild for GCC 4.3
+
+* Fri Aug 24 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-8
+- check licence & rebuilt for mass rebuild
+- add gawk to requires
+
+* Tue May 22 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-7
+- revert binding (patch9)
+- Resolves: rhbz#238122
+
+* Mon Mar 26 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-5
+- rebuilt (change in spec file)
+
+* Mon Mar 19 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-4
+- rebuilt (change in spec file)
+
+* Tue Feb 6 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-3
+- rebuilt (change in spec file)
+
+* Fri Jan 5 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-2
+- rebuilt (change in spec file)
+
+* Wed Oct 15 2006 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-1
+- new version from upstream
+- ipv6 patch #198410
+
+* Wed Aug 16 2006 Jesse Keating <jkeating@redhat.com> - 4.0.2-16
+- Don't use %%makeinstall, instead make install.
+- Change DDESTDIR to DESTDIR to do the right thing.
+- Comment out utf patch as it is no longer necessary.
+- Add dist tag
+- Change PreReq to correct Requires(pre), Requires(post), Requires(preun) 
+- Don't use RPM_SOURCE_DIR, reference the source file directly
+- Do the compiling (make) in %%build, not %%install
+- Don't replace /etc/screenrc if the user has modified it
+- Ditto /etc/pam.d/screen
+- Change the buildroot to follow guidelines
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 4.0.2-15.1
+- rebuild
+
+* Mon Jul 10 2006 Petr Rockai <prockai@redhat.com> - 4.0.2-15
+- bump MAXSTR (string buffer size) to 4k (from 256 bytes), fixes
+  status line issues with window list in status line and too many
+  windows (and possibly other issues with long strings)
+
+* Tue May 30 2006 Petr Rockai <prockai@redhat.com> - 4.0.2-14
+- put /usr/share/screen into the package (so the package owns the
+  directory as well, not only the files below); fixes BR 192852
+
+* Fri Feb 24 2006 Petr Rockai <prockai@redhat.com> - 4.0.2-12
+- detect libutil(s).a even if it is only present in lib64 (#182407)
+
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 4.0.2-11.2
+- bump again for double-long bug on ppc(64)
+
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 4.0.2-11.1
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+* Tue Jan 17 2006 Petr Rockai <prockai@redhat.com> - 4.0.2-11
+- change the default lockscreen shortcut to ^aX to make
+  it harder to hit by accident, as per BR 157821
+
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com> - 4.0.2-10
+- rebuilt
+
+* Mon Oct 10 2005 Tomas Mraz <tmraz@redhat.com> - 4.0.2-10
+- use include instead of pam_stack in pam config
+
+* Fri May 27 2005 Bill Nottingham <notting@redhat.com> - 4.0.2-9
+- don't use utmp group for socket dir; use a dedicated screen gid
+
+* Tue Mar 29 2005 Petr Rockai <prockai@redhat.com> - 4.0.2-8
+- fix BR 150392 by implementing the setgid/utmp scheme for socket directory
+
+* Wed Mar 02 2005 Petr Rockai <prockai@redhat.com> - 4.0.2-7
+- rebuild
+
+* Tue Feb 15 2005 Petr Rockai <prockai@redhat.com> - 4.0.2-6
+- fix BR 136234 by carrying out the suggested change in /etc/screenrc
+- drop screen-4.0.2-logname.patch (merged into screen-4.0.2-screenrc.patch)
+- grant wish 130674 by adding a (commented out) caption statement to default
+  screenrc
+
+* Fri Sep 10 2004 Warren Togami <wtogami@redhat.com> - 4.0.2-5
+- #132321 and some minor spec cleanups
+
+* Fri Aug  6 2004 Daniel Reed <djr@redhat.com> - 4.0.2-4
+- remove extra entries in "sources" file
+
+* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com> - 4.0.2-3
+- rebuilt
+
+* Wed Apr 28 2004 Daniel Reed <djr@redhat.com> - 4.0.2-2
+- Add patch -logname to correct #121875
+
+* Mon Apr 05 2004 Daniel Reed <djr@redhat.com> - 4.0.2-1
+- Version bump (4.0.2)
+
+* Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com> - 4.0.1-4
+- rebuilt
+
+* Tue Jan 27 2004 Lon Hohberger <lhh@redhat.com> - 4.0.1-3
+- Rebuild
+
+* Mon Dec 08 2003 Lon Hohberger <lhh@redhat.com> - 4.0.1-2
+- Build for Fedora
+
+* Mon Dec 08 2003 Lon Hohberger <lhh@redhat.com> - 4.0.1-1
+- Import of 4.0.1 from upstream.
+- Removed screen-homedir hack introduced in 3.9.15-8.  (I
+was unable to reproduce the behavior described in #98320,
+and thus, the patch isn't necessary.)
+- Fix for buffer overflow from Timo Strainen (patch 7).
+- Fix for #111084 - we now require texinfo to build.
+- Comment out lines in screenrc causing screen to complain
+at startup.
+
+* Tue Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-11
+- Rebuilt 
+
+* Tue Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-10
+- Put the bindkey back in for now.
+
+* Mon Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-9
+- Rebuilt
+
+* Mon Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-8
+- Change screen's behavior to do the following: Attempt to use
+~/.screen as the screen directory.  Failing that (ie, on files
+systems without Unix sockets support), try using /tmp/screen-<USER>.
+This prevents a user from creating /tmp/screens (which inherits
+the sticky bit from /tmp, preventing other users from using screen),
+as well as *tries* to be more secure.
+
+* Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-7
+- Rebuilt
+
+* Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-6
+- Disable system-wide read/write dir in /tmp; use user's ~/.screen
+directory for screen sessions. (#98320)
+
+* Mon Jun 16 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-5
+- Rebuilt
+
+* Fri Jun 13 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-4
+- Removed bindkey entry; stty `tput kbs` sets this correctly for
+the screen terminal type.
+
