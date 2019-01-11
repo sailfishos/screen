@@ -47,7 +47,7 @@
 * Fri Jan 5 2007 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-2
 - rebuilt (change in spec file)
 
-* Wed Oct 15 2006 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-1
+* Sun Oct 15 2006 Marcela Maslanova <mmaslano@redhat.com> - 4.0.3-1
 - new version from upstream
 - ipv6 patch #198410
 
@@ -143,16 +143,16 @@ and thus, the patch isn't necessary.)
 - Comment out lines in screenrc causing screen to complain
 at startup.
 
-* Tue Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-11
+* Thu Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-11
 - Rebuilt 
 
-* Tue Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-10
+* Thu Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-10
 - Put the bindkey back in for now.
 
-* Mon Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-9
+* Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-9
 - Rebuilt
 
-* Mon Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-8
+* Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-8
 - Change screen's behavior to do the following: Attempt to use
 ~/.screen as the screen directory.  Failing that (ie, on files
 systems without Unix sockets support), try using /tmp/screen-<USER>.
