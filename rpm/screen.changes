@@ -136,12 +136,11 @@
 * Mon Dec 08 2003 Lon Hohberger <lhh@redhat.com> - 4.0.1-1
 - Import of 4.0.1 from upstream.
 - Removed screen-homedir hack introduced in 3.9.15-8.  (I
-was unable to reproduce the behavior described in #98320,
-and thus, the patch isn't necessary.)
+  was unable to reproduce the behavior described in #98320,
+  and thus, the patch isn't necessary.)
 - Fix for buffer overflow from Timo Strainen (patch 7).
 - Fix for #111084 - we now require texinfo to build.
-- Comment out lines in screenrc causing screen to complain
-at startup.
+- Comment out lines in screenrc causing screen to complain at startup.
 
 * Thu Jul 10 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-11
 - Rebuilt 
@@ -154,23 +153,22 @@ at startup.
 
 * Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-8
 - Change screen's behavior to do the following: Attempt to use
-~/.screen as the screen directory.  Failing that (ie, on files
-systems without Unix sockets support), try using /tmp/screen-<USER>.
-This prevents a user from creating /tmp/screens (which inherits
-the sticky bit from /tmp, preventing other users from using screen),
-as well as *tries* to be more secure.
+  ~/.screen as the screen directory.  Failing that (ie, on files
+  systems without Unix sockets support), try using /tmp/screen-<USER>.
+  This prevents a user from creating /tmp/screens (which inherits
+  the sticky bit from /tmp, preventing other users from using screen),
+  as well as *tries* to be more secure.
 
 * Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-7
 - Rebuilt
 
 * Tue Jul 01 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-6
 - Disable system-wide read/write dir in /tmp; use user's ~/.screen
-directory for screen sessions. (#98320)
+  directory for screen sessions. (#98320)
 
 * Mon Jun 16 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-5
 - Rebuilt
 
 * Fri Jun 13 2003 Lon Hohberger <lhh@redhat.com> - 3.9.15-4
 - Removed bindkey entry; stty `tput kbs` sets this correctly for
-the screen terminal type.
-
+  the screen terminal type.
