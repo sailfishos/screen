@@ -126,8 +126,8 @@ fi
 %attr(2755,root,screen) %{_bindir}/screen
 %{_datadir}/screen
 %attr(775,root,screen) %{_localstatedir}/run/screen
-%config(noreplace) %{_sysconfdir}/screenrc
-%config(noreplace) %{_sysconfdir}/pam.d/screen
+%config %{_sysconfdir}/screenrc
+%config %{_sysconfdir}/pam.d/screen
 %{_sysconfdir}/tmpfiles.d/screen.conf
 
 %files doc
