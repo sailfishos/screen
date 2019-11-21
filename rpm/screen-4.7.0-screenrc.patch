@@ -1,15 +1,18 @@
---- screen-4.0.2/etc/screenrc.screenrc	2003-12-05 13:59:39.000000000 +0000
-+++ screen-4.0.2/etc/screenrc	2005-02-15 10:22:19.935843952 +0000
-@@ -15,7 +15,7 @@
+diff --git a/src/etc/screenrc b/src/etc/screenrc
+index ca6561d..0944fff 100644
+--- a/src/etc/screenrc
++++ b/src/etc/screenrc
+@@ -15,7 +15,8 @@ autodetach on
  startup_message off
  
  # emulate .logout message
 -pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
++#pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 +pow_detach_msg "Screen session of $LOGNAME $:cr:$:nl:ended."
  
  # advertise hardstatus support to $TERMCAP
  # termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
-@@ -60,7 +60,7 @@
+@@ -60,7 +61,7 @@ termcapinfo xterm* OL=100
  # tell screen that xterm can switch to dark background and has function
  # keys.
  termcapinfo xterm 'VR=\E[?5h:VN=\E[?5l'
@@ -18,7 +21,7 @@
  termcapinfo xterm 'kh=\EOH:kI=\E[2~:kD=\E[3~:kH=\EOF:kP=\E[5~:kN=\E[6~'
  
  # special xterm hardstatus: use the window title.
-@@ -126,9 +126,9 @@
+@@ -126,9 +127,9 @@ bind '}' history
  # Yet another hack:
  # Prepend/append register [/] to the paste if ^a^] is pressed.
  # This lets me have autoindent mode in vi.
@@ -31,7 +34,7 @@
  
  ################
  #
-@@ -140,9 +140,14 @@
+@@ -140,9 +141,14 @@ bind ^] paste [.]
  # screen -t 40 2 rlogin server
  
  # caption always "%3n %t%? @%u%?%? [%h]%?%=%c"
