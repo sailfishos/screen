@@ -1,0 +1,13 @@
+diff --git a/src/screen.h b/src/screen.h
+index d39b7ea..974f010 100644
+--- a/src/screen.h
++++ b/src/screen.h
+@@ -91,7 +91,7 @@
+ 
+ #define Ctrl(c) ((c)&037)
+ 
+-#define MAXSTR		768
++#define MAXSTR		4096
+ #define MAXARGS 	64
+ #define MSGWAIT 	5
+ #define MSGMINWAIT 	1
