@@ -12,6 +12,7 @@ Patch1:     screen-4.7.0-screenrc.patch
 Patch2:     screen-4.7.0-maxstr.patch
 Requires(pre):  /usr/sbin/groupadd
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(libcrypt)
 BuildRequires:  pam-devel
 BuildRequires:  libutempter-devel
 BuildRequires:  autoconf
