@@ -3,7 +3,7 @@ Summary:    A screen manager that supports multiple logins on one terminal
 Version:    4.7.0
 Release:    1
 License:    GPLv3+
-URL:        http://www.gnu.org/software/screen
+URL:        https://github.com/sailfishos/screen
 Source0:    %{name}-%{version}.tar.gz
 Source1:    screen.pam
 Source2:    screen.conf
