@@ -29,11 +29,9 @@ support multiple logins on one terminal.
 %package doc
 Summary:    Documentation for %{name}
 Requires:   %{name} = %{version}-%{release}
-Requires(post):   /sbin/install-info
-Requires(postun): /sbin/install-info
 
 %description doc
-Man and info pages for %{name}.
+Man pages for %{name}.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
@@ -79,7 +77,7 @@ install -p -m 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/screen
 mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/run/screen
 
 # Remove files from the buildroot which we don't want packaged
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+rm -f $RPM_BUILD_ROOT%{_infodir}/*
 
 mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
@@ -88,14 +86,6 @@ install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
 %pre
 /usr/sbin/groupadd -g 84 -r -f screen
 :
-
-%post doc
-%install_info --info-dir=%_infodir %{_infodir}/screen.info.gz
-
-%postun doc
-if [ $1 = 0 ] ;then
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/screen.info.gz
-fi
 
 %files
 %defattr(-,root,root,-)
@@ -109,6 +99,5 @@ fi
 
 %files doc
 %defattr(-,root,root,-)
-%{_infodir}/%{name}.info.gz
 %{_mandir}/man1/%{name}.*
 %{_docdir}/%{name}-%{version}
