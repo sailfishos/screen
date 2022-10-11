@@ -1,6 +1,6 @@
 Name:       screen
 Summary:    A screen manager that supports multiple logins on one terminal
-Version:    4.7.0
+Version:    4.9.0
 Release:    1
 License:    GPLv3+
 URL:        https://github.com/sailfishos/screen
@@ -9,9 +9,8 @@ Source1:    screen.pam
 Source2:    screen.conf
 Patch0:     screen-4.7.0-libs.patch
 Patch1:     screen-4.7.0-screenrc.patch
-Patch2:     screen-4.7.0-maxstr.patch
 Requires(pre):  /usr/sbin/groupadd
-BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(tinfo)
 BuildRequires:  pkgconfig(libcrypt)
 BuildRequires:  pam-devel
 BuildRequires:  libutempter-devel
@@ -30,22 +29,12 @@ support multiple logins on one terminal.
 %package doc
 Summary:    Documentation for %{name}
 Requires:   %{name} = %{version}-%{release}
-Requires(post):   /sbin/install-info
-Requires(postun): /sbin/install-info
-Obsoletes:  %{name}-docs
 
 %description doc
-Man and info pages for %{name}.
+Man pages for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
-
-# screen-4.7.0-libs.patch
-%patch0 -p1
-# screen-4.7.0-screenrc.patch
-%patch1 -p1
-# screen-4.7.0-maxstr.patch
-%patch2 -p1
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 %build
 cd src
@@ -62,15 +51,11 @@ autoreconf -vfi
 --with-sys-screenrc="%{_sysconfdir}/screenrc" \
 --with-socket-dir="%{_localstatedir}/run/screen"
 
-# We would like to have braille support.
-sed -i -e 's/.*#.*undef.*HAVE_BRAILLE.*/#define HAVE_BRAILLE 1/;' config.h
-
 sed -i -e 's/\(\/usr\)\?\/local\/etc/\/etc/g;' doc/screen.{1,texinfo}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf %{buildroot}
 
 cd src
 %make_install
@@ -92,7 +77,7 @@ install -p -m 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/screen
 mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/run/screen
 
 # Remove files from the buildroot which we don't want packaged
-rm -f $RPM_BUILD_ROOT%{_infodir}/dir
+rm -f $RPM_BUILD_ROOT%{_infodir}/*
 
 mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
@@ -101,14 +86,6 @@ install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
 %pre
 /usr/sbin/groupadd -g 84 -r -f screen
 :
-
-%post doc
-%install_info --info-dir=%_infodir %{_infodir}/screen.info.gz
-
-%postun doc
-if [ $1 = 0 ] ;then
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/screen.info.gz
-fi
 
 %files
 %defattr(-,root,root,-)
@@ -122,6 +99,5 @@ fi
 
 %files doc
 %defattr(-,root,root,-)
-%{_infodir}/%{name}.info.gz
 %{_mandir}/man1/%{name}.*
 %{_docdir}/%{name}-%{version}
