@@ -1,6 +1,6 @@
 Name:       screen
 Summary:    A screen manager that supports multiple logins on one terminal
-Version:    4.9.0
+Version:    4.9.1
 Release:    1
 License:    GPLv3+
 URL:        https://github.com/sailfishos/screen
