@@ -2,7 +2,7 @@ diff --git a/src/configure.ac b/src/configure.ac
 index ab799d2..cd5964f 100644
 --- a/src/configure.ac
 +++ b/src/configure.ac
-@@ -188,7 +188,9 @@ AC_EGREP_CPP(yes,
+@@ -189,7 +189,9 @@ AC_EGREP_CPP(yes,
  ], AC_NOTE(- you have a SVR4 system) AC_DEFINE(SVR4) svr4=1)
  if test -n "$svr4" ; then
  oldlibs="$LIBS"
@@ -11,17 +11,20 @@ index ab799d2..cd5964f 100644
 +#LIBS="$LIBS -lelf"
 ++LIBS="$LIBS"
  AC_CHECKING(SVR4)
- AC_TRY_LINK([#include <utmpx.h>
+ AC_TRY_LINK([
+     #include <utmpx.h>
+@@ -669,17 +671,13 @@ dnl
+     tgetent((char *)0, (char *)0);
  ],,
-@@ -623,14 +625,10 @@ dnl
- AC_CHECKING(for tgetent)
- AC_TRY_LINK(,tgetent((char *)0, (char *)0);,,
  olibs="$LIBS"
 -LIBS="-lcurses $olibs"
 -AC_CHECKING(libcurses)
 +LIBS="-ltinfo $olibs"
 +AC_CHECKING(libtinfo)
- AC_TRY_LINK(,[
+ AC_TRY_LINK([
+     #include <curses.h>
+     #include <term.h>
+ ],[
 -#ifdef __hpux
 -__sorry_hpux_libcurses_is_totally_broken_in_10_10();
 -#else
@@ -30,16 +33,16 @@ index ab799d2..cd5964f 100644
  ],,
  LIBS="-ltermcap $olibs"
  AC_CHECKING(libtermcap)
-@@ -655,7 +653,7 @@ AC_MSG_ERROR(!!! no tgetent - no screen)))))))))
- AC_TRY_RUN([
+@@ -739,7 +741,7 @@ AC_MSG_ERROR(!!! no tgetent - no screen)))))))))
+ int
  main()
  {
-- exit(strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1);
+- return(strcmp(tgoto("%p1%d", 0, 1), "1") ? 0 : 1);
 +    return 1;
  }], AC_NOTE(- you use the termcap database),
  AC_NOTE(- you use the terminfo database) AC_DEFINE(TERMINFO),
  AC_NOTE(- skipping check because we are cross compiling; assuming terminfo database is used) AC_DEFINE(TERMINFO))
-@@ -861,11 +859,6 @@ fi
+@@ -953,11 +955,6 @@ fi
  dnl
  dnl    ****  loadav  ****
  dnl
@@ -50,4 +53,4 @@ index ab799d2..cd5964f 100644
 -fi
  
  AC_CHECKING(getloadavg)
- AC_TRY_LINK(,[getloadavg((double *)0, 0);],
+ AC_TRY_LINK([
