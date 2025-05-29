@@ -1,14 +1,14 @@
 Name:       screen
 Summary:    A screen manager that supports multiple logins on one terminal
-Version:    4.9.1
+Version:    5.0.1
 Release:    1
 License:    GPLv3+
 URL:        https://github.com/sailfishos/screen
 Source0:    %{name}-%{version}.tar.gz
 Source1:    screen.pam
 Source2:    screen.conf
-Patch0:     screen-4.7.0-libs.patch
-Patch1:     screen-4.7.0-screenrc.patch
+Patch1:     screen-5.0.0-screenrc.patch
+Patch2:     screen-5.0.0-suppress_remap.patch
 Requires(pre):  /usr/sbin/groupadd
 BuildRequires:  pkgconfig(tinfo)
 BuildRequires:  pkgconfig(libcrypt)
@@ -88,7 +88,6 @@ install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
 :
 
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %attr(2755,root,screen) %{_bindir}/screen
 %{_datadir}/screen
@@ -98,6 +97,5 @@ install -m0644 -t $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version} \
 %{_sysconfdir}/tmpfiles.d/screen.conf
 
 %files doc
-%defattr(-,root,root,-)
 %{_mandir}/man1/%{name}.*
 %{_docdir}/%{name}-%{version}
